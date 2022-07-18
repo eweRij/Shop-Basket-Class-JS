@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="'pl">
+
+<head>
+    <title>Mega Shop</title>
+    <meta charset="UTF-8">
+    </meta>
+
+</head>
+
+<body>
+    <section class="'products">
+        <h1>Lista zakupów</h1>
+
+        <ul class="products-list">
+            <li><strong class="name">Nazwa: Pomarańcza</strong> <strong class="name">Cena:
+                    7.50</strong><button class="btn-buy-orange" data-id="orange" data-price="7.50"
+                    data-name="Pomarańcza">Kup</button></li>
+            <li><strong class="name">Nazwa: Ogórek</strong> <strong class="name">Cena:
+                    3.50</strong><button data-id="cucumber" data-price="3.50" data-name="Ogórek"
+                    class="btn-buy-cucumber">Kup</button></li>
+            <li><strong class="name">Nazwa: Cukinia</strong> <strong class="name">Cena:
+                    7.50</strong><button class="btn-buy-cukinia" data-id="cukinia" data-price="7.50"
+                    data-name="Cukinia">Kup</button></li>
+        </ul>
+    </section>
+
+    <section class="basket">
+        <h1>Koszyk</h1>
+
+        </div>
+        <ul class="basket-list"></ul>
+        <button class="btn-confirm" disabled>Złóż zamówienie</button>
+    </section>
+    <section>
+        <h1>Admin</h1>
+        <form class="product-create-form">
+            <label>Stwórz produkt</label>
+            <input class="product-create" type="text" placeholder="Wpisz nazwę" required>
+            <input class="price-create" type="text" placeholder="Wpisz cenę" required>
+            <button type=" submit"> Zatwierdź</button>
+        </form>
+    </section>
+    <script src="./src/basket.js"></script>
+    <script src="./src/app.js"></script>
+    <script src="./src/admin.js"></script>
+</body>
+
+</html>

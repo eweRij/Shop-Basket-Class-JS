@@ -1,19 +1,15 @@
 class Basket {
   constructor() {
-    this.items = [];
+    this.items = this.loadFromocalStorage();
   }
 
   addItem(item) {
     this.items.push(item);
+    this.saveToLocalStorage();
   }
-
-  //   removeItem(item) {
-  //     return this.items.filter((el) => {
-  //       return el !== item;
-  //     });
-  //   }
   removeItem(no) {
-    return this.items.splice(no - 1, 1);
+    this.items.splice(no - 1, 1);
+    this.saveToLocalStorage();
   }
   showBasket() {
     return this.items.map((item, index) => {
@@ -34,7 +30,19 @@ class Basket {
     // return sum;
   }
   clearBasket() {
-    return (this.items = []);
+    this.items = [];
+    this.saveToLocalStorage();
+  }
+  saveToLocalStorage() {
+    localStorage.setItem("basket", JSON.stringify(this.items));
+  }
+  loadFromocalStorage() {
+    const itemsFromLS = localStorage.getItem("basket");
+    if (itemsFromLS === null) {
+      return [];
+    } else {
+      return JSON.parse(localStorage.getItem("basket"));
+    }
   }
 }
 

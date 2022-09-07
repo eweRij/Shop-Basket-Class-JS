@@ -20,8 +20,12 @@ const removeProduct = (e) => {
   const id = Number(e.target.dataset.id);
   basket.removeItem(id);
   showOrder();
-  orderBtn.innerText = `Złóż zamówienie na ${basket.getTotalValue()} zł`;
-  localStorage.setItem("basket", JSON.stringify(basket.items));
+  if (basket.items.length > 0) {
+    orderBtn.innerText = `Złóż zamówienie na ${basket.getTotalValue()} zł`;
+  } else {
+    orderBtn.innerText = `Złóż zamówienie`;
+    orderBtn.setAttribute("disabled", true);
+  }
 };
 
 const addToBasket = (e) => {
@@ -33,7 +37,6 @@ const addToBasket = (e) => {
   showOrder();
   orderBtn.removeAttribute("disabled");
   orderBtn.innerText = `Złóż zamówienie na ${basket.getTotalValue()} zł`;
-  localStorage.setItem("basket", JSON.stringify(basket.items));
 };
 
 const clearAll = () => {
@@ -42,7 +45,6 @@ const clearAll = () => {
   showOrder();
   orderBtn.innerText = `Złóż zamówienie`;
   orderBtn.setAttribute("disabled", true);
-  localStorage.removeItem("basket");
 };
 
 for (const btn of buyBtns) {
@@ -50,3 +52,10 @@ for (const btn of buyBtns) {
 }
 
 orderBtn.addEventListener("click", clearAll);
+showOrder();
+if (basket.items.length === 0) {
+  orderBtn.setAttribute("disabled", true);
+} else {
+  orderBtn.removeAttribute("disabled");
+  orderBtn.innerText = `Złóż zamówienie na ${basket.getTotalValue()} zł`;
+}

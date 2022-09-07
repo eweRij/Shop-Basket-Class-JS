@@ -3,11 +3,6 @@ const priceCreate = document.querySelector(".price-create");
 const productCreateForm = document.querySelector(".product-create-form");
 const productsList = document.querySelector(".products-list");
 
-let products =
-  localStorage.getItem("products") !== null
-    ? localStorage.getItem("products")
-    : [];
-
 const createNewProduct = (e) => {
   e.preventDefault();
   const product = new Product(productCreate.value, priceCreate.value);
@@ -27,7 +22,5 @@ const createNewProduct = (e) => {
   newProduct.appendChild(newName);
   newProduct.appendChild(newPrice);
   newProduct.appendChild(newButton);
-  products.push(product);
-  localStorage.setItem("products", JSON.stringify(products));
 };
 productCreateForm.addEventListener("submit", createNewProduct);
